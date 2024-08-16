@@ -1,0 +1,63 @@
+# Step-by-step guide for integrating the translation plugin
+
+## Step 1: Embedding the HTML
+1. Open your Webflow project and navigate to the page where you want to add the translation dropdown.
+2. In the left sidebar of the Webflow editor, click on the "+" (Add) button.
+3. From the elements list, find and select the "Embed" element.
+4. Drag and drop the Embed element to your desired location on the page.
+5. In the HTML embed window that appears, paste the following code:
+   ```html
+   <div id="webflow-translation-plugin">
+       <div class="language-dropdown">
+           <button class="lang-btn">
+               <img src="https://flagcdn.com/w20/us.png" alt="English" class="flag-icon">
+               English
+           </button>
+           <div class="dropdown-content">
+               <a href="#" data-lang="en">
+                   <img src="https://flagcdn.com/w20/us.png" alt="English" class="flag-icon">
+                   English
+               </a>
+               <a href="#" data-lang="bg">
+                   <img src="https://flagcdn.com/w20/bg.png" alt="Bulgarian" class="flag-icon">
+                   Bulgarian
+               </a>
+               <a href="#" data-lang="es">
+                   <img src="https://flagcdn.com/w20/es.png" alt="Spanish" class="flag-icon">
+                   Spanish
+               </a>
+           </div>
+       </div>
+   </div>
+   ```
+6. Click "Save & Close" to confirm the embed.
+
+## Step 2: Adding the CSS
+1. In your Webflow project, go to "Project Settings" (usually found in the top-left corner).
+2. Navigate to the "Custom Code" tab.
+3. In the "Head Code" section, paste the following link tag:
+   ```html
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/your-username/your-repo-name@main/styles.css">
+   ```
+   Note: Replace `your-username` and `your-repo-name` with your actual GitHub username and repository name where you've hosted the `styles.css` file.
+4. Click "Save Changes" at the bottom of the page.
+
+## Step 3: Adding the JavaScript
+1. Remaining in the "Custom Code" tab of "Project Settings":
+2. Scroll down to the "Footer Code" section.
+3. Paste the following script tag:
+   ```html
+   <script src="https://cdn.jsdelivr.net/gh/your-username/your-repo-name@main/script.js"></script>
+   ```
+   Note: Again, replace `your-username` and `your-repo-name` with your actual GitHub details.
+4. Click "Save Changes" at the bottom of the page.
+
+## Step 4: Publishing and Verifying
+1. Return to your Webflow project's main editor.
+2. Click the "Publish" button (usually in the top-right corner).
+3. Once published, view your live site and verify that:
+   - The translation dropdown is visible where you placed it.
+   - Clicking the dropdown reveals the language options.
+   - Selecting a different language changes the displayed language.
+
+If you encounter any issues or the plugin doesn't work as expected, double-check all the previous steps, ensuring that the HTML is correctly embedded and the CSS and JavaScript files are properly linked.

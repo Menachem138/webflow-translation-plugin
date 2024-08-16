@@ -1,0 +1,80 @@
+// Define translations
+const translations = {
+    en: {
+        title: "Webflow Translation Plugin",
+        languageButton: "English"
+    },
+    bg: {
+        title: "Плъгин за превод на Webflow",
+        languageButton: "Български"
+    },
+    es: {
+        title: "Plugin de traducción de Webflow",
+        languageButton: "Español"
+    }
+};
+
+// Set default language
+let currentLang = 'en';
+
+// Function to update content
+function updateContent(lang) {
+    document.title = translations[lang].title;
+    const langBtn = document.querySelector('.lang-btn');
+    if (langBtn) {
+        langBtn.innerHTML = `
+            <img src="https://flagcdn.com/w20/${lang === 'en' ? 'us' : lang}.png" alt="${translations[lang].languageButton}" class="flag-icon">
+            ${translations[lang].languageButton}
+        `;
+    }
+
+    // Translate all elements with 'data-translate' attribute
+    document.querySelectorAll('[data-translate]').forEach(element => {
+        const key = element.getAttribute('data-translate');
+        if (translations[lang][key]) {
+            element.textContent = translations[lang][key];
+        }
+    });
+}
+
+// Function to initialize the plugin
+function initTranslationPlugin() {
+    const plugin = document.getElementById('webflow-translation-plugin');
+    if (!plugin) return;
+
+    // Event listener for language selection
+    plugin.querySelectorAll('.dropdown-content a').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const newLang = e.target.closest('a').getAttribute('data-lang');
+            if (newLang !== currentLang) {
+                currentLang = newLang;
+                updateContent(currentLang);
+            }
+        });
+    });
+
+    // Initial content update
+    updateContent(currentLang);
+}
+
+// Run the initialization when the DOM is fully loaded
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTranslationPlugin);
+} else {
+    initTranslationPlugin();
+}
+
+// MutationObserver to handle dynamic content changes
+const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+        if (mutation.type === 'childList') {
+            updateContent(currentLang);
+        }
+    });
+});
+
+observer.observe(document.body, {
+    childList: true,
+    subtree: true
+});

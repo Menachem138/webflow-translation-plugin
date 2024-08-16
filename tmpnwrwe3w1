@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webflow Translation Plugin</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Webflow Translation Plugin -->
+    <div id="webflow-translation-plugin">
+        <div class="language-dropdown">
+            <button class="lang-btn">
+                <img src="https://flagcdn.com/w20/us.png" alt="English" class="flag-icon">
+                English
+            </button>
+            <div class="dropdown-content">
+                <a href="#" data-lang="en">
+                    <img src="https://flagcdn.com/w20/us.png" alt="English" class="flag-icon">
+                    English
+                </a>
+                <a href="#" data-lang="bg">
+                    <img src="https://flagcdn.com/w20/bg.png" alt="Bulgarian" class="flag-icon">
+                    Bulgarian
+                </a>
+                <a href="#" data-lang="es">
+                    <img src="https://flagcdn.com/w20/es.png" alt="Spanish" class="flag-icon">
+                    Spanish
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Webflow site content container -->
+    <div id="webflow-content">
+        <!-- Webflow site content will be loaded here -->
+    </div>
+
+    <script src="script.js"></script>
+
+    <!-- Instructions for embedding -->
+    <!--
+    To embed this translation plugin in your Webflow site:
+    1. Copy the contents of the "webflow-translation-plugin" div.
+    2. In your Webflow project, add a new HTML embed element.
+    3. Paste the copied content into the HTML embed element.
+    4. Add the following script tag to your site's custom code section:
+       <script src="https://your-domain.com/path-to/script.js"></script>
+    5. Add the following link tag to your site's custom code section:
+       <link rel="stylesheet" href="https://your-domain.com/path-to/styles.css">
+    -->
+</body>
+</html>
